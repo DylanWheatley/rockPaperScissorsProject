@@ -44,14 +44,29 @@ function chooseWinner (choicePlayer, choiceComp) {
         
         }
 
-        else if (choicePlayer == "ROCK" && choiceComp == "SCISSORS") {
-            decision = "Player wins!"
+        else if (choicePlayer === "ROCK" && choiceComp === "SCISSORS") {
+            decision = "Player wins! Rock beats Scissors!";
         }
 
-        else if (choicePlayer == "ROCK" && choiceComp == "PAPER") {
-            decision = "Player loses!";
+        else if (choicePlayer === "ROCK" && choiceComp === "PAPER") {
+            decision = "Player loses! Rock loses to Paper";
         }
 
+        else if (choicePlayer === "PAPER" && choiceComp === "ROCK") {
+            decision = "Player wins! Paper beats rock";
+        }
+
+        else if (choicePlayer === "PAPER" && choiceComp === "SCISSORS") {
+            decision = "Player loses! Paper loses to Scissors";
+        }
+
+        else if (choicePlayer === "SCISSORS" && choiceComp === "ROCK"){
+            decision = "Player loses! Scissors loses to Rock";
+        }
+
+        else if (choicePlayer === "SCISSORS" && choiceComp === "PAPER") {
+            decison = "Player wins! Scissors beats paper";
+        }
         else {
 
             decision = "Failure";
@@ -61,9 +76,8 @@ function chooseWinner (choicePlayer, choiceComp) {
         return decision;
 }
 
-    console.log(getPlayerChoice("rock"));
-    console.log(getComputerChoice())
-    console.log(chooseWinner(getPlayerChoice("rock"), getComputerChoice()));
+    console.log(chooseWinner("SCISSORS", "ROCK"));
+    prompt("TEST")
 
 
 //display winner of the round
