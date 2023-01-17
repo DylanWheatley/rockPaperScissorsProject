@@ -133,7 +133,7 @@ for (let i = 0; i<5; i++) {
     }
 
     if (playerPoints === 3 || compPoints === 3) {
-        i = 5;
+        i = 5;  
     }
   
 
