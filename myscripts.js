@@ -1,9 +1,17 @@
 //system takes in user choice of rock, paper, or scissors
 
-let num = prompt("1 for rock, 2 sci, 3 pape");
-num = parseInt(num); //convert the string to a number for easy use
+//let num = prompt("1 for rock, 2 sci, 3 pape");
+//num = parseInt(num); //convert the string to a number for easy use
 
-function getPlayerChoice(num) {
+
+let playerPoints = 0;
+let compPoints = 0; 
+
+function getPlayerChoice() {
+
+    let num = prompt("1 for rock, 2 sci, 3 pape");
+    num = parseInt(num); //convert the string to a number for easy use
+
     let playerChoice= "";
     if (num === 1) {
         playerChoice = "ROCK";
@@ -57,40 +65,47 @@ function getComputerChoice(){
 
 function chooseWinner (choicePlayer, choiceComp) { //this is going to take the two "get" functions above for use later
 
-        let decision = "test";
+        let decision = "";
 
-        if (choiceComp == choicePlayer) {
+        if (choiceComp === choicePlayer) {
             
             decision = "Tie!";
         
         }
 
         else if (choicePlayer === "ROCK" && choiceComp === "SCISSORS") {
-            decision = "Player wins! Rock beats Scissors!";
+            decision = "Player wins!";
+            playerPoints++;
         }
 
         else if (choicePlayer === "ROCK" && choiceComp === "PAPER") {
-            decision = "Player loses! Rock loses to Paper";
+            decision = "Player loses!";
+            compPoints++;
         }
 
         else if (choicePlayer === "PAPER" && choiceComp === "ROCK") {
-            decision = "Player wins! Paper beats rock";
+            decision = "Player wins!";
+            playerPoints++;
         }
 
         else if (choicePlayer === "PAPER" && choiceComp === "SCISSORS") {
-            decision = "Player loses! Paper loses to Scissors";
+            decision = "Player loses!";
+            compPoints++;
         }
 
         else if (choicePlayer === "SCISSORS" && choiceComp === "ROCK"){
-            decision = "Player loses! Scissors loses to Rock";
+            decision = "Player loses!";
+            compPoints++;
         }
 
         else if (choicePlayer === "SCISSORS" && choiceComp === "PAPER") {
-            decison = "Player wins! Scissors beats paper";
+            decision = "Player wins!";
+            playerPoints++;
+
         }
         else {
 
-            decision = "Failure"; //only for an issue in the code
+            decision = "Please enter a valid number, round forfeit."; //this is the line that will print if a wrong number is entered at the start
             
         }
 
@@ -102,7 +117,37 @@ function chooseWinner (choicePlayer, choiceComp) { //this is going to take the t
 
 //display winner of the round
 
-console.log(chooseWinner(getPlayerChoice(num), getComputerChoice())); //order of functions is important
+//console.log(chooseWinner(getPlayerChoice(num), getComputerChoice())); //old version, used to print just one round. 
 
 
 //repeat 5 times, best of 5
+
+
+
+for (let i = 0; i<5; i++) {
+
+    let points = console.log(chooseWinner(getPlayerChoice(), getComputerChoice()));
+
+    if (playerPoints < 3 || compPoints < 3) {
+        i--;
+    }
+
+    if (playerPoints === 3 || compPoints === 3) {
+        i = 5;
+    }
+  
+
+    // if (points === "Player loses!") {
+    //     compPoints++;
+    // }
+
+    // else if (points === "Player wins!") {
+    //     playerPoints++;
+    // }
+
+    // else if (points === "Tie!") {
+    //     i--;
+    // }
+
+    console.log("Current score - Player: " + playerPoints + " Computer Points: " + compPoints);
+}
