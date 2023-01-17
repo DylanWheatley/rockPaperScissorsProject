@@ -1,9 +1,30 @@
 //system takes in user choice of rock, paper, or scissors
-function getPlayerChoice(txt) {
-    txt = txt.toUpperCase();
-    return txt;
+
+let num = prompt("1 for rock, 2 sci, 3 pape");
+num = parseInt(num); //convert the string to a number for easy use
+
+function getPlayerChoice(num) {
+    let playerChoice= "";
+    if (num === 1) {
+        playerChoice = "ROCK";
+    }
+
+    else if (num === 2) {
+        playerChoice = "SCISSORS";
+    }
+
+    else if (num === 3) {
+        playerChoice = "PAPER";
+    }
+
+    else {
+        playerChoice = "Please choose a valid number"; //just in case an invalid entry
+    }
+
+    return playerChoice;
+    
 }
-//number system - 1 2 or 3 for different choices
+
 
 //system makes a choice of rock, paper, or scissors for the computer "player"
 function getComputerChoice(){
@@ -34,7 +55,7 @@ function getComputerChoice(){
 
 //compare the two choices to decide a winner
 
-function chooseWinner (choicePlayer, choiceComp) {
+function chooseWinner (choicePlayer, choiceComp) { //this is going to take the two "get" functions above for use later
 
         let decision = "test";
 
@@ -69,18 +90,19 @@ function chooseWinner (choicePlayer, choiceComp) {
         }
         else {
 
-            decision = "Failure";
+            decision = "Failure"; //only for an issue in the code
             
         }
 
         return decision;
 }
 
-    console.log(chooseWinner("SCISSORS", "ROCK"));
-    prompt("TEST")
+    
 
 
 //display winner of the round
+
+console.log(chooseWinner(getPlayerChoice(num), getComputerChoice())); //order of functions is important
 
 
 //repeat 5 times, best of 5
