@@ -1,7 +1,9 @@
 //system takes in user choice of rock, paper, or scissors
 function getPlayerChoice(txt) {
     txt = txt.toUpperCase();
+    return txt;
 }
+//number system - 1 2 or 3 for different choices
 
 //system makes a choice of rock, paper, or scissors for the computer "player"
 function getComputerChoice(){
@@ -31,6 +33,37 @@ function getComputerChoice(){
 
 
 //compare the two choices to decide a winner
+
+function chooseWinner (choicePlayer, choiceComp) {
+
+        let decision = "test";
+
+        if (choiceComp == choicePlayer) {
+            
+            decision = "Tie!";
+        
+        }
+
+        else if (choicePlayer == "ROCK" && choiceComp == "SCISSORS") {
+            decision = "Player wins!"
+        }
+
+        else if (choicePlayer == "ROCK" && choiceComp == "PAPER") {
+            decision = "Player loses!";
+        }
+
+        else {
+
+            decision = "Failure";
+            
+        }
+
+        return decision;
+}
+
+    console.log(getPlayerChoice("rock"));
+    console.log(getComputerChoice())
+    console.log(chooseWinner(getPlayerChoice("rock"), getComputerChoice()));
 
 
 //display winner of the round
