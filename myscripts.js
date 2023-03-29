@@ -117,7 +117,8 @@ function chooseWinner (choicePlayer, choiceComp) { //this is going to take the t
 
 //display winner of the round
 
-//console.log(chooseWinner(getPlayerChoice(num), getComputerChoice())); //old version, used to print just one round. 
+//console.log(chooseWinner(getPlayerChoice(num), getComputerChoice())); 
+//old version, used to print just one round. 
 
 
 //repeat 5 times, best of 5
