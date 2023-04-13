@@ -7,10 +7,21 @@
 let playerPoints = 0;
 let compPoints = 0; 
 
-function getPlayerChoice() {
 
-    let num = prompt("1 for rock, 2 sci, 3 pape");
-    num = parseInt(num); //convert the string to a number for easy use
+//query selectors for buttons on ui
+let rock = document.querySelector('#rock');
+let paper = document.querySelector('#paper');
+let scissors = document.querySelector('#scissors');
+
+rock.onclick = console.log(chooseWinner(getPlayerChoice(1), getComputerChoice()));
+paper.onclick = getPlayerChoice(2);
+scissors.onclick = getPlayerChoice(3);
+
+function getPlayerChoice(num) {
+
+        //old code, no need for it when using buttons now
+    //let num = prompt("1 for rock, 2 sci, 3 pape");
+    //num = parseInt(num); //convert the string to a number for easy use
 
     let playerChoice= "";
     if (num === 1) {
@@ -30,6 +41,7 @@ function getPlayerChoice() {
     }
 
     return playerChoice;
+    
     
 }
 
@@ -124,20 +136,26 @@ function chooseWinner (choicePlayer, choiceComp) { //this is going to take the t
 //repeat 5 times, best of 5
 
 
+//-----Removing for now for upgrading ui------
+// for (let i = 0; i<5; i++) {
 
-for (let i = 0; i<5; i++) {
+//     let points = console.log(chooseWinner(getPlayerChoice(), getComputerChoice()));
 
-    let points = console.log(chooseWinner(getPlayerChoice(), getComputerChoice()));
+//     if (playerPoints < 3 || compPoints < 3) {
+//         i--; //ensures a best of 5 
+//     }
 
-    if (playerPoints < 3 || compPoints < 3) {
-        i--;
-    }
-
-    if (playerPoints === 3 || compPoints === 3) {
-        i = 5;  
-    }
+//     if (playerPoints === 3 || compPoints === 3) {
+//         i = 5;  //meets best of 5 condition
+//     }
   
 
+
+
+
+
+
+//old code
     // if (points === "Player loses!") {
     //     compPoints++;
     // }
@@ -150,5 +168,5 @@ for (let i = 0; i<5; i++) {
     //     i--;
     // }
 
-    console.log("Current score - Player: " + playerPoints + " Computer Points: " + compPoints);
-}
+   // console.log("Current score - Player: " + playerPoints + " Computer Points: " + compPoints);
+//}
