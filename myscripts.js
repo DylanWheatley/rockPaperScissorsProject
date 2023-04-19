@@ -1,11 +1,13 @@
 //system takes in user choice of rock, paper, or scissors
-
-//let num = prompt("1 for rock, 2 sci, 3 pape");
-//num = parseInt(num); //convert the string to a number for easy use
+//now using buttons
 
 
 let playerPoints = 0;
 let compPoints = 0; 
+
+//div for results
+let divLog = document.querySelector('#log');
+
 
 
 //query selectors for buttons on ui
@@ -13,9 +15,21 @@ let rock = document.querySelector('#rock');
 let paper = document.querySelector('#paper');
 let scissors = document.querySelector('#scissors');
 
-rock.onclick = console.log(chooseWinner(getPlayerChoice(1), getComputerChoice()));
-paper.onclick = getPlayerChoice(2);
-scissors.onclick = getPlayerChoice(3);
+//should change to addEventListener style, would be cleaner
+rock.onclick = () => {
+    chooseWinner(getPlayerChoice(1), getComputerChoice());
+    console.log(getPlayerChoice(1));
+
+}
+
+paper.onclick = () => {
+    chooseWinner(getPlayerChoice(2), getComputerChoice());
+    console.log(getPlayerChoice(2));
+}
+scissors.onclick = () => {
+    chooseWinner(getPlayerChoice(3), getComputerChoice());
+    console.log(getPlayerChoice(3));
+}
 
 function getPlayerChoice(num) {
 
@@ -72,65 +86,71 @@ function getComputerChoice(){
 }
 
 
-
 //compare the two choices to decide a winner
 
 function chooseWinner (choicePlayer, choiceComp) { //this is going to take the two "get" functions above for use later
 
-        let decision = "";
+        //let decision = "";
 
         if (choiceComp === choicePlayer) {
             
-            decision = "Tie!";
+            divLog.textContent = "Tie!";
         
         }
 
         else if (choicePlayer === "ROCK" && choiceComp === "SCISSORS") {
-            decision = "Player wins!";
+            divLog.textContent = "Player wins!";
             playerPoints++;
         }
 
         else if (choicePlayer === "ROCK" && choiceComp === "PAPER") {
-            decision = "Player loses!";
+            divLog.textContent = "Player loses!";
             compPoints++;
         }
 
         else if (choicePlayer === "PAPER" && choiceComp === "ROCK") {
-            decision = "Player wins!";
+            divLog.textContent = "Player wins!";
             playerPoints++;
         }
 
         else if (choicePlayer === "PAPER" && choiceComp === "SCISSORS") {
-            decision = "Player loses!";
+            divLog.textContent= "Player loses!";
             compPoints++;
         }
 
         else if (choicePlayer === "SCISSORS" && choiceComp === "ROCK"){
-            decision = "Player loses!";
+            divLog.textContent = "Player loses!";
             compPoints++;
         }
 
         else if (choicePlayer === "SCISSORS" && choiceComp === "PAPER") {
-            decision = "Player wins!";
+            divLog.textContent= "Player wins!";
             playerPoints++;
 
         }
         else {
 
-            decision = "Please enter a valid number, round forfeit."; //this is the line that will print if a wrong number is entered at the start
+            divLog.textContent= "Please enter a valid number, round forfeit."; //this is the line that will print if a wrong number is entered at the start
             
         }
 
-        return decision;
+        return divLog.textContent;
 }
 
     
 
+// for (let i = 0; i<5; i++) {
+//     let points  = divLog.textContent;
 
-//display winner of the round
+//     if (playerPoints <3 || compPoints < 3) {
+//         i--;
+//     }
 
-//console.log(chooseWinner(getPlayerChoice(num), getComputerChoice())); 
-//old version, used to print just one round. 
+//     else if (playerPoints === 3 || compPoints === 3) {
+//         i = 5;  //meets best of 5 condition
+//     }
+// }
+
 
 
 //repeat 5 times, best of 5
@@ -148,14 +168,40 @@ function chooseWinner (choicePlayer, choiceComp) { //this is going to take the t
 //     if (playerPoints === 3 || compPoints === 3) {
 //         i = 5;  //meets best of 5 condition
 //     }
-  
+// }
 
 
 
 
 
 
-//old code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//old code - giving space from code im using to reduce confusion
     // if (points === "Player loses!") {
     //     compPoints++;
     // }
@@ -170,3 +216,8 @@ function chooseWinner (choicePlayer, choiceComp) { //this is going to take the t
 
    // console.log("Current score - Player: " + playerPoints + " Computer Points: " + compPoints);
 //}
+
+//display winner of the round
+
+//console.log(chooseWinner(getPlayerChoice(num), getComputerChoice())); 
+//old version, used to print just one round.
